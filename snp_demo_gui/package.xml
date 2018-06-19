@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>snp_demo_gui</name>
+  <version>0.0.0</version>
+  <description>SNP demo panel</description>
+
+  <maintainer email="harshavardhan.deshpande@ipa.fraunhofer.de">Harsh Deshpande</maintainer>
+  <maintainer email="jonathan.hechtbauer@ipa.fraunhofer.de">Jonathan Hechtbauer</maintainer>
+
+  <author email="mathias.luedtke@ipa.fraunhofer.de">Mathias Lüdtke</author>
+
+  <license>Apache 2.0</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>actionlib</build_depend>
+  <build_depend>class_loader</build_depend>
+  <build_depend>godel_msgs</build_depend>
+  <build_depend>pluginlib</build_depend>
+  <build_depend>moveit_ros_planning_interface</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rviz</build_depend>
+
+  <exec_depend>actionlib</exec_depend>
+  <exec_depend>godel_msgs</exec_depend>
+  <exec_depend>pluginlib</exec_depend>
+  <exec_depend>moveit_ros_planning_interface</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rviz</exec_depend>
+
+  <export>
+   <rviz plugin="${prefix}/plugin.xml"/>
+  </export>
+
+</package>

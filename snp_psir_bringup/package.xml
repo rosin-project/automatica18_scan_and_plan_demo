@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>snp_psir_bringup</name>
+  <version>0.0.0</version>
+  <description>The snp_psir_bringup package</description>
+
+  <maintainer email="harshavardhan.deshpande@ipa.fraunhofer.de">Harsh Deshpande</maintainer>
+  <maintainer email="jonathan.hechtbauer@ipa.fraunhofer.de">Jonathan Hechtbauer</maintainer>
+
+  <license>Apache License 2.0</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>godel_process_planning</exec_depend>
+  <exec_depend>godel_surface_detection</exec_depend>
+  <exec_depend>industrial_robot_simulator_service</exec_depend>
+  <exec_depend>joint_state_controller</exec_depend>
+  <exec_depend>joint_trajectory_controller</exec_depend>
+  <exec_depend>meshing_plugins</exec_depend>
+  <exec_depend>nodelet</exec_depend>
+  <exec_depend>path_planning_plugins</exec_depend>
+  <exec_depend>pcl_ros</exec_depend>
+  <exec_depend>pilz_modbus</exec_depend>
+  <exec_depend>pilz_sto_modbus_adapter</exec_depend>
+  <exec_depend>psir_description</exec_depend>
+  <exec_depend>psir_demo_moveit_config</exec_depend>
+  <exec_depend>psir_moveit_config</exec_depend>
+  <exec_depend>position_controllers</exec_depend>
+  <exec_depend>roslaunch</exec_depend>
+  <exec_depend>rviz</exec_depend>
+  <exec_depend>snp_psir_description</exec_depend>
+  <exec_depend>snp_psir_support</exec_depend>
+  <exec_depend>velocity_controllers</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <export>
+    <gazebo_ros
+        gazebo_model_path="${prefix}/models" />
+  </export>
+</package>

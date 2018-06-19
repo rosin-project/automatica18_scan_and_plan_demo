@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="snp_tool" params="parent *origin prefix:=${''}">
+ 
+    <xacro:include filename="$(find snp_psir_description)/urdf/acf_with_grinder/acf_110_01_xs_with_grinder.urdf.xacro"/>
+    <xacro:include filename="$(find snp_psir_description)/urdf/ensenso.urdf.xacro"/>
+
+    <!-- tool fixture -->
+    <link name="${prefix}tool_fixture">
+      <inertial>
+        <origin xyz="0.015 0 0.1" rpy="0 0 0" />
+        <mass value="0.5" />
+        <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://snp_psir_description/meshes/tool_fixture.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="0.75 0.75 0.75 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://snp_psir_description/meshes/tool_fixture.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${prefix}tool_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="${prefix}tool_fixture"/>
+      <xacro:insert_block name="origin"/>
+    </joint>
+
+    <!-- tool -->
+    <xacro:acf_110_01_xs_with_grinder parent="${prefix}tool_fixture" extent_factor="0.3" prefix="${prefix}" contact="true">
+      <origin  xyz="0 0 0.018" rpy="0 0 ${pi*0.5}" /> 
+    </xacro:acf_110_01_xs_with_grinder> 
+
+    <!-- camera -->
+    <xacro:ensenso parent="${prefix}tool_fixture" prefix="${prefix}">
+	    <origin xyz="0.068 0.003 0.048"  rpy="${-pi/2} 0 ${-pi/2}"/>
+	  </xacro:ensenso>
+
+  </xacro:macro>
+</robot>

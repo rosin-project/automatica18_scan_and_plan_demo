@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <model name="obj_01">
+    <pose>0 0 0 0 0 0</pose>
+    <static>true</static>
+    <link name="link">
+      <visual name="pattern">
+        <pose> 0 0 0 0 0 0 </pose>
+        <geometry>
+          <box>
+            <size>0.13 0.13 0.05</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>obj/obj_01</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

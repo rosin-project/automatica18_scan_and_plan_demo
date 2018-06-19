@@ -1,0 +1,62 @@
+#!/usr/bin/env python
+
+# Copyright (c) 2018, Fraunhofer IPA
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import rospy
+import actionlib
+
+#from ensenso_camera_msgs.msg import GetParameterAction, GetParameterGoal
+from ensenso_camera_msgs.msg import SetParameterAction, SetParameterGoal
+from ensenso_camera_msgs.msg import GetParameterAction, GetParameterGoal
+from ensenso_camera_msgs.msg import Parameter
+
+def main():
+    timeout = rospy.get_param("~timeout", 60)
+    lower_point = rospy.get_param("~lower_point",{'x': 0.0, 'y': 0.0, 'z': 0.0})
+    upper_point = rospy.get_param("~upper_point",{'x': 0.0, 'y': 0.0, 'z': 0.0})
+
+    set_parameter = actionlib.SimpleActionClient("set_parameter", SetParameterAction)
+    get_parameter = actionlib.SimpleActionClient("get_parameter", GetParameterAction)
+    if not set_parameter.wait_for_server(rospy.Duration(timeout)):
+        rospy.logerr("The camera node is not running!")
+        sys.exit()
+
+    #upper:LeftTop; lower:RightBottom
+    roi_message = Parameter(key=Parameter.REGION_OF_INTEREST)
+    roi_message.region_of_interest_value.lower.x=lower_point["x"]
+    roi_message.region_of_interest_value.lower.y=lower_point["y"]
+    roi_message.region_of_interest_value.lower.z=lower_point["z"]
+    roi_message.region_of_interest_value.upper.x=upper_point["x"]
+    roi_message.region_of_interest_value.upper.y=upper_point["y"]
+    roi_message.region_of_interest_value.upper.z=upper_point["z"]
+
+    set_parameter.send_goal(SetParameterGoal(
+		parameters=[Parameter(key=Parameter.REGION_OF_INTEREST, region_of_interest_value=roi_message.region_of_interest_value)]
+    ))
+    set_parameter.wait_for_result()
+
+    #check the roi
+    get_parameter.send_goal(GetParameterGoal(keys=[Parameter.REGION_OF_INTEREST]))
+    get_parameter.wait_for_result()
+    roi = get_parameter.get_result().results[0].region_of_interest_value
+    print ("lower point of roi: /n", roi.lower)
+    print ("upper point of roi: /n", roi.upper)
+
+if __name__ == "__main__":
+    try:
+        rospy.init_node("ensenso_camera_set_parameter")
+        main()
+    except rospy.ROSInterruptException:
+        pass

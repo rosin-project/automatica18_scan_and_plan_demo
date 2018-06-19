@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<library path="lib/libsnp_demo_gui">
+  <class type="snp_demo_gui::DemoPanel" base_class_type="rviz::Panel">
+    <description>
+      SNP demo panel
+    </description>
+  </class>
+</library>
