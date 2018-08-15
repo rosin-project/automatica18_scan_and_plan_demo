@@ -11,19 +11,6 @@
   <!-- Decide if PSS4000 or PNoz-Multi is used -->
   <arg name="PSS4000" default="false" />
 
- 	<!-- URDF file-->
-  <arg name="urdf_file" default="$(find snp_psir_description)/urdf/snp_psir_demo.urdf.xacro" />
-
-  <!-- Robot description argument -->
-  <arg name="robot_description" value="$(arg robot_name)_description" />
-
-  <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
-  <param name="robot_description" type="str" command="$(find xacro)/xacro --inorder '$(arg urdf_file)' sim:=false"/>
-
-  <rosparam file="$(find snp_psir_bringup)/config/arm_controller.yaml" command="load" />
-  <!--node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
-    ns="/$(arg robot_name)" args="joint_state_controller joint_trajectory_controller" /-->
-
 	<!-- run the "real robot" interface nodes -->
   <!--   - this typically includes: robot_state, motion_interface, and joint_trajectory_action nodes -->
   <!--   - replace these calls with appropriate robot-specific calls or launch files -->

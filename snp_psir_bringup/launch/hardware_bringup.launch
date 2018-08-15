@@ -2,8 +2,22 @@
 <launch>
   <arg name="sim_robot" default="false"/>
   <arg name="pipeline" default="command_planner" />
+  <arg name="robot_name" default="psir"/>
+  <arg name="controller_group" default="arm"/>
+  <arg name="robot_description" value="$(arg robot_name)_description"/>
+  <arg name="urdf_file" default="$(find snp_psir_description)/urdf/snp_psir_demo.urdf.xacro"/>
 
-  <!-- robot -->
+  <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
+  <param name="robot_description" type="str" command="$(find xacro)/xacro --inorder '$(arg urdf_file)' sim:=$(arg sim_robot)"/>
+
+  <!-- Controllers -->
+  <group ns="$(arg robot_name)">
+    <rosparam command="load" file="$(find psir_description)/config/$(arg controller_group)_controller.yaml" />
+    <node name="controller_spawner" pkg="controller_manager" type="spawner"
+          args="$(arg controller_group)_joint_trajectory_controller $(arg controller_group)_joint_state_controller" />
+  </group>
+
+  <!-- Robot -->
   <group if="$(arg sim_robot)">
     <include file="$(find snp_psir_bringup)/launch/psir_gazebo.launch"/>
   </group>
