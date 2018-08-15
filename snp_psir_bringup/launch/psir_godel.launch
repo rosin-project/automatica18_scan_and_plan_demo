@@ -2,28 +2,27 @@
 <launch>
   <!-- arguments -->
   <arg name="sim_robot" default="false"/>
-
   <arg name="robot_model_plugin" default="descartes_moveit/IkFastMoveitStateAdapter"/>
   <arg name="debug_core" default="false"/> <!--Brings up the surface blending service in debug mode-->
   <arg name="save_data" default="false" />
   <arg name="save_location" default="$(env HOME)/.ros/" />
 
 
-    <!-- Launches the blend/scan process planners: requires descartes plugin for the robot model -->
-    <include file="$(find godel_process_planning)/launch/process_planning.launch">
-      <arg name="robot_model_plugin" value="$(arg robot_model_plugin)"/>
-      <arg name="keyence_tcp" value="ensenso_optical_frame"/>
-    </include>
+  <!-- Launches the blend/scan process planners: requires descartes plugin for the robot model -->
+  <include file="$(find godel_process_planning)/launch/process_planning.launch">
+    <arg name="robot_model_plugin" value="$(arg robot_model_plugin)"/>
+    <arg name="keyence_tcp" value="ensenso_optical_frame"/>
+  </include>
 
-    <!-- Process execution nodes: These monitor the state of robot's execution of the planned path. They can be, and in this case are, robot or vendor specific -->
-    <group>
-      <node name="blend_process_execution" pkg="snp_psir_support" type="psir_blend_process_service_node">
-        <remap from="simulate_path" to="simulation/simulate_trajectory"/>
-        <remap from="joint_trajectory_action" to="/psir/arm_joint_trajectory_controller/follow_joint_trajectory"/>
-        <param name="spindle_host" value="127.0.0.1" if="$(arg sim_robot)"/>
-        <param name="spindle_port" value="1502" if="$(arg sim_robot)"/>
-      </node>
-    </group>
+  <!-- Process execution nodes: These monitor the state of robot's execution of the planned path. They can be, and in this case are, robot or vendor specific -->
+  <group>
+    <node name="blend_process_execution" pkg="snp_psir_support" type="psir_blend_process_service_node">
+      <remap from="simulate_path" to="simulation/simulate_trajectory"/>
+      <remap from="joint_trajectory_action" to="/psir/arm_joint_trajectory_controller/follow_joint_trajectory"/>
+      <param name="spindle_host" value="127.0.0.1" if="$(arg sim_robot)"/>
+      <param name="spindle_port" value="1502" if="$(arg sim_robot)"/>
+    </node>
+  </group>
 
   <!-- Bring up simulated robot that can be visualized under the tf namespace 'simulation'
        Allows for previewing paths generated before execution. -->

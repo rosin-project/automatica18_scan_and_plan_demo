@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-  <!-- Override robot_name argument -->
+
   <arg name="robot_name" default="psir" />
   <arg name="paused" default="true"/>
   <arg name="gui" default="false"/>

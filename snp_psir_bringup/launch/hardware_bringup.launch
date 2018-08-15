@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <launch>
+
   <arg name="sim_robot" default="false"/>
-  <arg name="pipeline" default="command_planner" />
+  <arg name="pipeline" default="command_planner"/>
   <arg name="robot_name" default="psir"/>
   <arg name="controller_group" default="arm"/>
   <arg name="robot_description" value="$(arg robot_name)_description"/>

@@ -1,56 +1,25 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="robot_ip" default="192.168.0.11"/>
+  <arg name="robot_ip" default="169.254.60.1"/>
   <arg name="robot_port" default="502"/>
 
-  <arg name="robot_name" default="psir" />
-  <!-- Enable/Disable gripper -->
-  <arg name="has_gripper" default="false" />
-
-  <!-- Decide if PSS4000 or PNoz-Multi is used -->
-  <arg name="PSS4000" default="false" />
-
 	<!-- run the "real robot" interface nodes -->
-  <!--   - this typically includes: robot_state, motion_interface, and joint_trajectory_action nodes -->
-  <!--   - replace these calls with appropriate robot-specific calls or launch files -->
     <include file="$(find psir_description)/launch/robot.launch" >
-      <arg name="has_gripper" value="$(arg has_gripper)" />
       <arg name="load_robot_description" value="false" />
     </include>
 
     <arg name="modbus_offset" default="512" />
 
-    <!-- PSS4000 settings -->
-    <group if="$(arg PSS4000)">
-      <!--arg name="modbus_offset" default="977" /-->
-
-      <include file="$(find pilz_modbus)/launch/modbus_server.launch" >
-        <arg name="modbus_server_ip" default="$(arg robot_ip)" />
-        <arg name="modbus_server_port" default="$(arg robot_port)" />
-        <arg name="modbus_offset" default="$(arg modbus_offset)" />
-        <arg name="modbus_size" default="1" />
-      </include>
-
-    </group>
-
-    <!-- PNoz-Multi settings -->
-    <group unless="$(arg PSS4000)">
-
-
-      <include file="$(find pilz_modbus)/launch/modbus_read_client.launch" >
-      <arg name="modbus_server_ip" default="169.254.60.1" />
-      <arg name="modbus_server_port" default="502" />
+    <include file="$(find pilz_modbus)/launch/modbus_read_client.launch" >
+      <arg name="modbus_server_ip" default="$(arg robot_ip)" />
+      <arg name="modbus_server_port" default="$(arg robot_port)" />
       <arg name="modbus_offset" default="$(arg modbus_offset)" />
       <arg name="modbus_size" default="1" />
-      </include>
-    </group>
+    </include>
 
     <node name="pilz_sto_modbus_adapter_node" pkg="pilz_sto_modbus_adapter" type="pilz_sto_modbus_adapter_node">
       <param name="modbus_offset" value="$(arg modbus_offset)"/>
     </node>
-
-  <!--include file="$(find snp_psir_bringup)/launch/setup_camera.launch" >
-  </include-->
 
 </launch>
