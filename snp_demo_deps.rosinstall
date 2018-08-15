@@ -9,4 +9,4 @@
 
 - git: {local-name: ensenso_ros_driver, uri: 'https://github.com/ensenso/ros_driver.git'}
 
-# TODO: PSIR repository
+- git: {local-name: pilz_robots, uri: 'https://github.com/PilzDE/pilz_robots', version: 0.2.2}

@@ -91,7 +91,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        base_link:
+        prbt_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -125,42 +125,42 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_flange:
+        prbt_flange:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_link_1:
+        prbt_link_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_link_2:
+        prbt_link_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_link_3:
+        prbt_link_3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_link_4:
+        prbt_link_4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_link_5:
+        prbt_link_5:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_link_foot:
+        prbt_link_foot:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_tcp:
+        prbt_tcp:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -173,7 +173,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        tool0:
+        prbt_tool0:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -212,7 +212,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        base_link:
+        prbt_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -246,42 +246,42 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_flange:
+        prbt_flange:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_link_1:
+        prbt_link_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_link_2:
+        prbt_link_2:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_link_3:
+        prbt_link_3:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_link_4:
+        prbt_link_4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_link_5:
+        prbt_link_5:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_link_foot:
+        prbt_link_foot:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        psir_tcp:
+        prbt_tcp:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -294,7 +294,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        tool0:
+        prbt_tool0:
           Alpha: 1
           Show Axes: false
           Show Trail: false

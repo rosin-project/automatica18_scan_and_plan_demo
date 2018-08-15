@@ -26,7 +26,7 @@
 
   <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen">
     <param name="publish_frequency" type="double" value="30.0" />
-    <rosparam param="/source_list"> [/psir/joint_states] </rosparam>
+    <rosparam param="/source_list"> [/prbt/joint_states] </rosparam>
   </node>
 
   <!-- Planning Functionality -->
