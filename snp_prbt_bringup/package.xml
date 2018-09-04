@@ -27,7 +27,7 @@
   <exec_depend>position_controllers</exec_depend>
   <exec_depend>prbt_moveit_config</exec_depend>
   <exec_depend>prbt_support</exec_depend>
-  <exec_depend>prbt_demo_moveit_config</exec_depend>
+  <exec_depend>snp_prbt_moveit_config</exec_depend>
   <exec_depend>roslaunch</exec_depend>
   <exec_depend>rviz</exec_depend>
   <exec_depend>snp_prbt_description</exec_depend>

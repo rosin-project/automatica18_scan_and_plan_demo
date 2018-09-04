@@ -21,7 +21,7 @@
   <arg name="publish_monitored_planning_scene" default="true"/>
 
   <!-- load robot models -->
-  <include file="$(find prbt_demo_moveit_config)/launch/planning_context.launch"/>
+  <include file="$(find snp_prbt_moveit_config)/launch/planning_context.launch"/>
 
 
   <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen">
@@ -30,19 +30,19 @@
   </node>
 
   <!-- Planning Functionality -->
-  <include ns="move_group" file="$(find prbt_demo_moveit_config)/launch/planning_pipeline.launch.xml">
+  <include ns="move_group" file="$(find snp_prbt_moveit_config)/launch/planning_pipeline.launch.xml">
     <arg name="pipeline" value="$(arg pipeline)" />
   </include>
 
   <!-- Trajectory Execution Functionality -->
-  <include ns="move_group" file="$(find prbt_demo_moveit_config)/launch/trajectory_execution.launch.xml" if="$(arg allow_trajectory_execution)">
+  <include ns="move_group" file="$(find snp_prbt_moveit_config)/launch/trajectory_execution.launch.xml" if="$(arg allow_trajectory_execution)">
     <arg name="moveit_manage_controllers" value="true" />
     <arg name="moveit_controller_manager" value="snp_prbt_description" unless="$(arg fake_execution)"/>
     <arg name="moveit_controller_manager" value="fake" if="$(arg fake_execution)"/>
   </include>
 
   <!-- Sensors Functionality -->
-  <include ns="move_group" file="$(find prbt_demo_moveit_config)/launch/sensor_manager.launch.xml" if="$(arg allow_trajectory_execution)">
+  <include ns="move_group" file="$(find snp_prbt_moveit_config)/launch/sensor_manager.launch.xml" if="$(arg allow_trajectory_execution)">
     <arg name="moveit_sensor_manager" value="snp_prbt_description" />
   </include>
 

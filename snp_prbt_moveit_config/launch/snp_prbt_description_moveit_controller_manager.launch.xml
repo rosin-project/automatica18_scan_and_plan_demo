@@ -15,6 +15,6 @@
   <param name="use_controller_manager" value="$(arg use_controller_manager)" />
   
   <!-- The rest of the params are specific to this plugin -->
-  <rosparam file="$(find prbt_demo_moveit_config)/config/controllers.yaml"/>
+  <rosparam file="$(find snp_prbt_moveit_config)/config/controllers.yaml"/>
 
 </launch>

@@ -1,6 +1,6 @@
 <package>
 
-  <name>prbt_demo_moveit_config</name>
+  <name>snp_prbt_moveit_config</name>
   <version>0.0.0</version>
   <description>
      An automatically generated package with all the configuration and launch files for using the snp_prbt_description with the MoveIt! Motion Planning Framework

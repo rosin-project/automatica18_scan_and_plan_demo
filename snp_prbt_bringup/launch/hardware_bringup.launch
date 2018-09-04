@@ -31,7 +31,7 @@
   
   <rosparam command="load" file="$(find prbt_moveit_config)/config/joint_names.yaml"/>
 
-  <include file="$(find prbt_demo_moveit_config)/launch/move_group.launch">
+  <include file="$(find snp_prbt_moveit_config)/launch/move_group.launch">
     <arg name="publish_monitored_planning_scene" value="true" />
     <arg name="fake_execution" value="false"/>
     <arg name="pipeline" value="$(arg pipeline)" />
