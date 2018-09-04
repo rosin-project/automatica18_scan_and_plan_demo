@@ -1,5 +1,11 @@
-:warning: This package depends on the *Pilz PRBT* robot which will be released soon! <br/>
--> Currently step `rosdep install ..` will fail
+# Scan and Polish application:
+
+:warning: This application requires some not yet released packages.
+(Simulation: `pilz_trajectory_generation`; Real Robot: `pilz_modbus` and `pilz_sto_modbus_adapter`) <br/>
+
+Application implements:
+- `godel` (Scan and Plan): https://github.com/ros-industrial-consortium/godel
+- `pilz_robots`: https://github.com/PilzDE/pilz_robots
 
 ## Installation
 
