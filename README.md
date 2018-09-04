@@ -16,7 +16,7 @@ git clone https://github.com/rosin-project/automatica18_scan_and_plan_demo.git
 
 # Download dependencies
 wstool init .
-wstool merge ~/snp_demo_ws/src/automatica18_scan_and_plan_demo/snp_demo_deps.rosinstall
+wstool merge ~/snp_demo_ws/src/automatica18_scan_and_plan_demo/snp_prbt.rosinstall
 wstool up
 
 # Reset ROS_PACKAGE_PATH
