@@ -1,1 +1,0 @@
-rosrun moveit_kinematics create_ikfast_moveit_plugin.py psir manipulator prbt_ikfast_manipulator_plugin /home/hsd/scannplan_ws/src/godel/godel_robots/pilz/prbt_ikfast_manipulator_plugin/src/prbt_manipulator_ikfast_solver.cpp
