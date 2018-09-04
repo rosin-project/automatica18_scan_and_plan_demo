@@ -2,32 +2,21 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="snp_psir_description">
   
-  <xacro:include filename="$(find psir_description)/urdf/psir.urdf.xacro"/>
+  <xacro:include filename="$(find prbt_support)/urdf/prbt_macro.xacro"/>
   <xacro:include filename="$(find snp_psir_description)/urdf/snp_tool.urdf.xacro"/>
   <xacro:include filename="$(find snp_psir_description)/urdf/psir_table.urdf.xacro"/>
 
+  <xacro:property name="prefix" value="prbt_"/>
+
   <!-- world-->
   <link name="world_frame"/>
+  <joint name="world_to_baselink" type="fixed">
+    <parent link="world_frame"/>
+    <child link="${prefix}base_link"/>
+  </joint>
 
   <!-- robot -->
-  <link name="base_link"/> <!-- add base_link to robot -->
-  <joint name="world_to_base" type="fixed">
-    <parent link="world_frame"/>
-    <child link="base_link"/>
-  </joint>
-
-  <xacro:psir name="psir" parent="base_link">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <tcp>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-    </tcp>
-  </xacro:psir>
-
-  <link name="tool0"/> <!-- add tool0 to robot -->
-  <joint name="tool0_joint" type="fixed">
-    <parent link="psir_flange" />
-    <child link="tool0" />
-  </joint>
+  <xacro:prbt prefix="${prefix}"/>
 
   <!-- table-->
   <xacro:table parent="world_frame">
@@ -35,7 +24,7 @@
   </xacro:table> 
 
   <!-- tool -->
-  <xacro:snp_tool parent="tool0">
+  <xacro:snp_tool parent="${prefix}tool0">
     <origin  xyz="0 0 0" rpy="0 0 ${5 * pi / 4.0}" />
   </xacro:snp_tool> 
 

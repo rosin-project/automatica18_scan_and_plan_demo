@@ -5,7 +5,7 @@ services:
 variables:
   UPSTREAM_WORKSPACE: file
   ROSINSTALL_FILENAME: snp_demo_deps.rosinstall
-  ROSDEP_SKIP_KEYS: "pilz_modbus pilz_sto_modbus_adapter pilz_trajectory_generation psir_moveit_config psir_description"
+  ROSDEP_SKIP_KEYS: "pilz_modbus pilz_sto_modbus_adapter pilz_trajectory_generation"
   BEFORE_SCRIPT: "wget -q https://download.ensenso.com/s/ensensosdk/download?files=ensenso-sdk-2.2.65-x64.deb -O /tmp/ensenso.deb && dpkg -i /tmp/ensenso.deb"
   DOCKER_RUN_OPTS: "-e ENSENSO_INSTALL=/opt/ensenso"
   ADDITIONAL_DEBS: "pkg-config"

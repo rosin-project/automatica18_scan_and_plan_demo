@@ -3,8 +3,8 @@
 
   <arg name="sim_robot" default="false"/>
   <arg name="pipeline" default="command_planner"/>
-  <arg name="robot_name" default="psir"/>
-  <arg name="controller_group" default="arm"/>
+  <arg name="robot_name" default="prbt"/>
+  <arg name="controller_group" default="manipulator"/>
   <arg name="robot_description" value="$(arg robot_name)_description"/>
   <arg name="urdf_file" default="$(find snp_psir_description)/urdf/snp_psir_demo.urdf.xacro"/>
 
@@ -13,7 +13,7 @@
 
   <!-- Controllers -->
   <group ns="$(arg robot_name)">
-    <rosparam command="load" file="$(find psir_description)/config/$(arg controller_group)_controller.yaml" />
+    <rosparam command="load" file="$(find prbt_support)/config/$(arg controller_group)_controller.yaml" />
     <node name="controller_spawner" pkg="controller_manager" type="spawner"
           args="$(arg controller_group)_joint_trajectory_controller $(arg controller_group)_joint_state_controller" />
   </group>
@@ -29,7 +29,7 @@
     </include>
   </group>
   
-  <rosparam command="load" file="$(find psir_moveit_config)/config/joint_names.yaml"/>
+  <rosparam command="load" file="$(find prbt_moveit_config)/config/joint_names.yaml"/>
 
   <include file="$(find psir_demo_moveit_config)/launch/move_group.launch">
     <arg name="publish_monitored_planning_scene" value="true" />

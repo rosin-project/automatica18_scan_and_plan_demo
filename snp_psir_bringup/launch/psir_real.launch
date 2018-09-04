@@ -5,7 +5,7 @@
   <arg name="robot_port" default="502"/>
 
 	<!-- run the "real robot" interface nodes -->
-    <include file="$(find psir_description)/launch/robot.launch" >
+    <include file="$(find prbt_support)/launch/robot.launch" >
       <arg name="load_robot_description" value="false" />
     </include>
 

@@ -2,11 +2,15 @@
 <launch>
   <!-- arguments -->
   <arg name="sim_robot" default="false"/>
+  <arg name="robot_name" default="prbt" />
   <arg name="robot_model_plugin" default="descartes_moveit/IkFastMoveitStateAdapter"/>
   <arg name="debug_core" default="false"/> <!--Brings up the surface blending service in debug mode-->
   <arg name="save_data" default="false" />
   <arg name="save_location" default="$(env HOME)/.ros/" />
 
+  <!-- Configure descartes model -->
+  <param name="ikfast_base_frame" value="$(arg robot_name)_base_link"/>
+  <param name="ikfast_tool_frame" value="$(arg robot_name)_tool0"/>
 
   <!-- Launches the blend/scan process planners: requires descartes plugin for the robot model -->
   <include file="$(find godel_process_planning)/launch/process_planning.launch">
@@ -18,7 +22,7 @@
   <group>
     <node name="blend_process_execution" pkg="snp_psir_support" type="psir_blend_process_service_node">
       <remap from="simulate_path" to="simulation/simulate_trajectory"/>
-      <remap from="joint_trajectory_action" to="/psir/arm_joint_trajectory_controller/follow_joint_trajectory"/>
+      <remap from="joint_trajectory_action" to="/$(arg robot_name)/manipulator_joint_trajectory_controller/follow_joint_trajectory"/>
       <param name="spindle_host" value="127.0.0.1" if="$(arg sim_robot)"/>
       <param name="spindle_port" value="1502" if="$(arg sim_robot)"/>
     </node>
