@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="snp_psir_description">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="snp_prbt_description">
   
   <xacro:include filename="$(find prbt_support)/urdf/prbt_macro.xacro"/>
-  <xacro:include filename="$(find snp_psir_description)/urdf/prbt_gazebo.xacro"/>
-  <xacro:include filename="$(find snp_psir_description)/urdf/snp_tool.urdf.xacro"/>
-  <xacro:include filename="$(find snp_psir_description)/urdf/psir_table.urdf.xacro"/>
+  <xacro:include filename="$(find snp_prbt_description)/urdf/prbt_gazebo.xacro"/>
+  <xacro:include filename="$(find snp_prbt_description)/urdf/snp_tool.urdf.xacro"/>
+  <xacro:include filename="$(find snp_prbt_description)/urdf/prbt_table.urdf.xacro"/>
 
   <xacro:property name="prefix" value="prbt_"/>
 

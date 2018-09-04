@@ -20,7 +20,7 @@
 
   <!-- Process execution nodes: These monitor the state of robot's execution of the planned path. They can be, and in this case are, robot or vendor specific -->
   <group>
-    <node name="blend_process_execution" pkg="snp_psir_support" type="psir_blend_process_service_node">
+    <node name="blend_process_execution" pkg="snp_prbt_support" type="prbt_blend_process_service_node">
       <remap from="simulate_path" to="simulation/simulate_trajectory"/>
       <remap from="joint_trajectory_action" to="/$(arg robot_name)/manipulator_joint_trajectory_controller/follow_joint_trajectory"/>
       <param name="spindle_host" value="127.0.0.1" if="$(arg sim_robot)"/>
@@ -35,7 +35,7 @@
   <!-- Brings up the core blending service: this includes the tool path planners
        for both the blender and the laser scanner. -->
   <include file="$(find godel_surface_detection)/launch/godel_core.launch">
-    <arg name="config_path" value="$(find snp_psir_bringup)/config"/>
+    <arg name="config_path" value="$(find snp_prbt_bringup)/config"/>
     <arg name="debug" value="$(arg debug_core)"/>
     <arg name="save_data" value="$(arg save_data)" />
     <arg name="save_location" value="$(arg save_location)" />

@@ -8,7 +8,7 @@
   <param name="use_gui" value="$(arg gui)"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find snp_psir_description)/worlds/psir_robot.world"/>
+    <arg name="world_name" value="$(find snp_prbt_description)/worlds/prbt_robot.world"/>
     <arg name="paused" value="$(arg paused)"/>
   </include>
 

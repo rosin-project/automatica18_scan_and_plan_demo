@@ -4,8 +4,8 @@
 
   <xacro:macro name="snp_tool" params="parent *origin prefix:=${''}">
  
-    <xacro:include filename="$(find snp_psir_description)/urdf/acf_with_grinder/acf_110_01_xs_with_grinder.urdf.xacro"/>
-    <xacro:include filename="$(find snp_psir_description)/urdf/ensenso.urdf.xacro"/>
+    <xacro:include filename="$(find snp_prbt_description)/urdf/acf_with_grinder/acf_110_01_xs_with_grinder.urdf.xacro"/>
+    <xacro:include filename="$(find snp_prbt_description)/urdf/ensenso.urdf.xacro"/>
 
     <!-- tool fixture -->
     <link name="${prefix}tool_fixture">
@@ -17,7 +17,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://snp_psir_description/meshes/tool_fixture.STL" />
+          <mesh filename="package://snp_prbt_description/meshes/tool_fixture.STL" />
         </geometry>
         <material name="">
           <color rgba="0.75 0.75 0.75 1" />
@@ -26,7 +26,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://snp_psir_description/meshes/tool_fixture.STL" />
+          <mesh filename="package://snp_prbt_description/meshes/tool_fixture.STL" />
         </geometry>
       </collision>
     </link>

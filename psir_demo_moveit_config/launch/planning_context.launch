@@ -6,10 +6,10 @@
   <arg name="robot_description" default="robot_description"/>
 
   <!-- Load universal robot description format (URDF) -->
-  <param if="$(arg load_robot_description)" name="$(arg robot_description)" command="$(find xacro)/xacro --inorder '$(find snp_psir_description)/urdf/pilz_demo_description.urdf.xacro'"/>
+  <param if="$(arg load_robot_description)" name="$(arg robot_description)" command="$(find xacro)/xacro --inorder '$(find snp_prbt_description)/urdf/pilz_demo_description.urdf.xacro'"/>
 
   <!-- The semantic description that corresponds to the URDF -->
-  <param name="$(arg robot_description)_semantic" textfile="$(find psir_demo_moveit_config)/config/snp_psir_demo.srdf" />
+  <param name="$(arg robot_description)_semantic" textfile="$(find prbt_demo_moveit_config)/config/snp_prbt_demo.srdf" />
   
   <!-- Load updated joint limits (override information from URDF) -->
   <group ns="$(arg robot_description)_planning">
@@ -20,7 +20,7 @@
 
   <!-- Load default settings for kinematics; these settings are overridden by settings in a node's namespace -->
   <group ns="$(arg robot_description)_kinematics">
-    <rosparam command="load" file="$(find psir_demo_moveit_config)/config/kinematics.yaml"/>
+    <rosparam command="load" file="$(find prbt_demo_moveit_config)/config/kinematics.yaml"/>
   </group>
   
 </launch>

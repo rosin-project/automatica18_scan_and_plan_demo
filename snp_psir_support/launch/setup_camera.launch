@@ -11,12 +11,12 @@
   </node>
 
   <!-- set the region of interest of the camera -->
-  <node name="set_roi_node" pkg="snp_psir_support" type="set_region_of_interest">
+  <node name="set_roi_node" pkg="snp_prbt_support" type="set_region_of_interest">
     <rosparam param="lower_point" subst_value="True">$(arg roi_lower)</rosparam>
     <rosparam param="upper_point" subst_value="True">$(arg roi_lower)</rosparam>
   </node>
 
   <!-- Ensenso request server -->
-  <node name="request_data_node" pkg="snp_psir_support" type="ensenso_interface"/>
+  <node name="request_data_node" pkg="snp_prbt_support" type="ensenso_interface"/>
 
 </launch>

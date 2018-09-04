@@ -1,4 +1,4 @@
-:warning: This package depends on the *Pilz PSIR* robot which will be released soon! <br/>
+:warning: This package depends on the *Pilz PRBT* robot which will be released soon! <br/>
 -> Currently step `rosdep install ..` will fail
 
 ## Installation
@@ -38,11 +38,11 @@ source ~/snp_demo_ws/devel/setup.bash
 
 ```shell
 # Simulation:
-roslaunch snp_psir_bringup application_bringup.launch
+roslaunch snp_prbt_bringup application_bringup.launch
 # Info: Make sure to press play in Gazebo
 
 # Real robot:
-roslaunch snp_psir_bringup application_bringup.launch sim_robot:=false
+roslaunch snp_prbt_bringup application_bringup.launch sim_robot:=false
 
 ```
 
@@ -60,7 +60,7 @@ iface can0 can static
 
 
 ### Remove local scan_parameter cache
-Make sure to clear possible local `godel_robot_scan_parameters` since they would overwrite the ones of this repo (`snp_psir_bringup/config/robot_scan.yaml`).
+Make sure to clear possible local `godel_robot_scan_parameters` since they would overwrite the ones of this repo (`snp_prbt_bringup/config/robot_scan.yaml`).
 
 ```shell
 rm -f ~/.ros/godel_robot_scan_parameters.msg

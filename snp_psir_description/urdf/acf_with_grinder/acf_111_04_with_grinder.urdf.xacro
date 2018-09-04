@@ -19,7 +19,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://snp_psir_description/meshes/acf_with_grinder/acf_111_04_with_grinder.STL" />
+          <mesh filename="package://snp_prbt_description/meshes/acf_with_grinder/acf_111_04_with_grinder.STL" />
         </geometry>
         <material name="">
           <color rgba="0.8 0.8 0.9 1" />

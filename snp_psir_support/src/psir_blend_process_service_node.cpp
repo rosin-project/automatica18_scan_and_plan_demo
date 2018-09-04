@@ -112,14 +112,14 @@ public:
     }
 
     as_.start();
-    ROS_INFO("Starting PSIR blend process service");
+    ROS_INFO("Starting PRBT blend process service");
     return true;
   }
 };
 
 int main(int argc, char** argv)
 {
-  ros::init(argc, argv, "psir_blend_process_service_node");
+  ros::init(argc, argv, "prbt_blend_process_service_node");
 
   ros::NodeHandle nh;
   PsirBlendProcess proc;

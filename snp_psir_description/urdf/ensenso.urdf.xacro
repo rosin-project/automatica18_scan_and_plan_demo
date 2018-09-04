@@ -13,7 +13,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://snp_psir_description/meshes/ensenso_n35.STL" />
+          <mesh filename="package://snp_prbt_description/meshes/ensenso_n35.STL" />
         </geometry>
         <material name="">
           <color rgba="0.8 0.8 0.9 1" />

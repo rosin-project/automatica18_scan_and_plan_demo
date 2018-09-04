@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <package format="2">
-  <name>psir_ikfast_manipulator_plugin</name>
+  <name>prbt_ikfast_manipulator_plugin</name>
   <version>0.0.0</version>
-  <description>The psir_ikfast_manipulator_plugin package</description>
+  <description>The prbt_ikfast_manipulator_plugin package</description>
 
   <maintainer email="harshavardhan.deshpande@ipa.fraunhofer.de">Harsh Deshpande</maintainer>
   <maintainer email="jonathan.hechtbauer@ipa.fraunhofer.de">Jonathan Hechtbauer</maintainer>
@@ -19,7 +19,7 @@
   <depend>urdf</depend>
 
   <export>
-    <moveit_core plugin="${prefix}/psir_manipulator_moveit_ikfast_plugin_description.xml"/>
+    <moveit_core plugin="${prefix}/prbt_manipulator_moveit_ikfast_plugin_description.xml"/>
   </export>
 
 </package>

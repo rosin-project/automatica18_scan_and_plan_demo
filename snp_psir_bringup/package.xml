@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>snp_psir_bringup</name>
+  <name>snp_prbt_bringup</name>
   <version>0.0.0</version>
-  <description>The snp_psir_bringup package</description>
+  <description>The snp_prbt_bringup package</description>
 
   <maintainer email="harshavardhan.deshpande@ipa.fraunhofer.de">Harsh Deshpande</maintainer>
   <maintainer email="jonathan.hechtbauer@ipa.fraunhofer.de">Jonathan Hechtbauer</maintainer>
@@ -27,11 +27,11 @@
   <exec_depend>position_controllers</exec_depend>
   <exec_depend>prbt_moveit_config</exec_depend>
   <exec_depend>prbt_support</exec_depend>
-  <exec_depend>psir_demo_moveit_config</exec_depend>
+  <exec_depend>prbt_demo_moveit_config</exec_depend>
   <exec_depend>roslaunch</exec_depend>
   <exec_depend>rviz</exec_depend>
-  <exec_depend>snp_psir_description</exec_depend>
-  <exec_depend>snp_psir_support</exec_depend>
+  <exec_depend>snp_prbt_description</exec_depend>
+  <exec_depend>snp_prbt_support</exec_depend>
   <exec_depend>velocity_controllers</exec_depend>
   <exec_depend>xacro</exec_depend>
 

@@ -1,7 +1,7 @@
 <launch>
 
   <!-- The argument for specifying robot type -->
-  <arg name="robot_name" default="snp_psir_description" />
+  <arg name="robot_name" default="snp_prbt_description" />
 
   <!-- The robot config argument -->
   <arg name="robot_config" value="$(arg robot_name)_config" />
@@ -15,6 +15,6 @@
   <param name="use_controller_manager" value="$(arg use_controller_manager)" />
   
   <!-- The rest of the params are specific to this plugin -->
-  <rosparam file="$(find psir_demo_moveit_config)/config/controllers.yaml"/>
+  <rosparam file="$(find prbt_demo_moveit_config)/config/controllers.yaml"/>
 
 </launch>

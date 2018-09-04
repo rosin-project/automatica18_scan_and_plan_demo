@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(snp_psir_support)
+project(snp_prbt_support)
 add_definitions(-std=c++11)
 
 find_package(catkin REQUIRED COMPONENTS
@@ -31,12 +31,12 @@ catkin_package()
 include_directories(${catkin_INCLUDE_DIRS} ${MODBUS_INCLUDE_DIR}
 )
 
-add_executable(psir_blend_process_service_node
-  src/psir_blend_process_service_node.cpp
+add_executable(prbt_blend_process_service_node
+  src/prbt_blend_process_service_node.cpp
 )
-add_dependencies(psir_blend_process_service_node ${catkin_EXPORTED_TARGETS})
+add_dependencies(prbt_blend_process_service_node ${catkin_EXPORTED_TARGETS})
 
-target_link_libraries(psir_blend_process_service_node
+target_link_libraries(prbt_blend_process_service_node
   ${catkin_LIBRARIES}
   ${MODBUS_LIBRARY}
 )
@@ -49,7 +49,7 @@ target_link_libraries(spindle_sim
   ${MODBUS_LIBRARY}
 )
 
-install(TARGETS psir_blend_process_service_node spindle_sim
+install(TARGETS prbt_blend_process_service_node spindle_sim
         RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(PROGRAMS scripts/ensenso_interface scripts/set_region_of_interest

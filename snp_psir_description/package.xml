@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>snp_psir_description</name>
+  <name>snp_prbt_description</name>
   <version>0.0.0</version>
-  <description>The snp_psir_description package</description>
+  <description>The snp_prbt_description package</description>
 
   <maintainer email="harshavardhan.deshpande@ipa.fraunhofer.de">Harsh Deshpande</maintainer>
   <maintainer email="jonathan.hechtbauer@ipa.fraunhofer.de">Jonathan Hechtbauer</maintainer>
