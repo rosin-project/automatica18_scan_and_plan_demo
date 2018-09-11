@@ -1,8 +1,5 @@
 # Scan and Polish application:
 
-:warning: This application requires some not yet released packages.
-(Simulation: `pilz_trajectory_generation`; Real Robot: `pilz_modbus` and `pilz_sto_modbus_adapter`) <br/>
-
 Application implements:
 - `godel` (Scan and Plan): https://github.com/ros-industrial-consortium/godel
 - `pilz_robots`: https://github.com/PilzDE/pilz_robots
@@ -29,7 +26,8 @@ wstool up
 source /opt/ros/kinetic/setup.bash
 
 # Install dependencies 
-rosdep update && rosdep install --from-paths ~/snp_demo_ws/src --ignore-src
+rosdep update && rosdep install --from-paths ~/snp_demo_ws/src --ignore-src --skip-keys="pilz_modbus pilz_sto_modbus_adapter prbt_pg70_support"
+
 
 # Build workspace
 cd ~/snp_demo_ws && catkin build 
@@ -49,6 +47,7 @@ roslaunch snp_prbt_bringup application_bringup.launch
 
 # Real robot:
 roslaunch snp_prbt_bringup application_bringup.launch sim_robot:=false
+# Info: Real robot requires pilz_modbus and pilz_sto_modbus_adapter
 
 ```
 

@@ -3,7 +3,6 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="snp_prbt_description">
   
   <xacro:include filename="$(find prbt_support)/urdf/prbt_macro.xacro"/>
-  <xacro:include filename="$(find snp_prbt_description)/urdf/prbt_gazebo.xacro"/>
   <xacro:include filename="$(find snp_prbt_description)/urdf/snp_tool.urdf.xacro"/>
   <xacro:include filename="$(find snp_prbt_description)/urdf/prbt_table.urdf.xacro"/>
 
@@ -18,7 +17,6 @@
 
   <!-- robot -->
   <xacro:prbt prefix="${prefix}"/>
-  <xacro:prbt_gazebo prefix="${prefix}"/>
 
   <!-- table-->
   <xacro:table parent="world_frame">
