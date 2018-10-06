@@ -1,8 +1,21 @@
-# Scan and Polish application:
+# Scan and Polish application
 
-Application implements:
+<a href="https://ipa-jfh.github.io/urdf-animation/application_scan_and_plan/">
+    <img src="https://user-images.githubusercontent.com/17281534/46005937-aafba700-c0b6-11e8-9d8f-0148392488f1.gif" width="430" height="250">
+    >> 3D animation
+</a>
+
+## Application implements
 - `godel` (Scan and Plan): https://github.com/ros-industrial-consortium/godel
+- `ensenso_driver`: https://github.com/ensenso/ros_driver (<a href="http://rosin-project.eu/ftps">
+  <img src="http://rosin-project.eu/wp-content/uploads/rosin_ack_logo_wide.png" 
+       alt="rosin_logo" height="20" >
+</a> [funded](http://rosin-project.eu/ftps))
 - `pilz_robots`: https://github.com/PilzDE/pilz_robots
+- `pilz_industrial_motion`: https://github.com/PilzDE/pilz_industrial_motion (<a href="http://rosin-project.eu/ftps">
+  <img src="http://rosin-project.eu/wp-content/uploads/rosin_ack_logo_wide.png" 
+       alt="rosin_logo" height="20" >
+</a> [funded](http://rosin-project.eu/ftps))
 
 ## Installation
 
