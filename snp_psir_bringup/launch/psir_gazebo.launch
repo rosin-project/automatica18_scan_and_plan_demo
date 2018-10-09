@@ -1,25 +1,16 @@
 <?xml version="1.0"?>
 <launch>
-  <!-- Override robot_name argument -->
+
   <arg name="robot_name" default="psir" />
   <arg name="paused" default="true"/>
   <arg name="gui" default="false"/>
 
   <param name="use_gui" value="$(arg gui)"/>
 
-  <!-- URDF file-->
-  <arg name="urdf_file" default="$(find snp_psir_description)/urdf/snp_psir_demo.urdf.xacro" />
-
-  <!-- Robot description argument -->
-  <arg name="robot_description" value="$(arg robot_name)_description" />
-
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find snp_psir_description)/worlds/psir_robot.world"/>
     <arg name="paused" value="$(arg paused)"/>
   </include>
-
-  <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
-  <param name="robot_description" type="str" command="$(find xacro)/xacro --inorder '$(arg urdf_file)' sim:=true"/>
 
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model $(arg robot_name)
     -J $(arg robot_name)_joint_1 1.7
@@ -29,11 +20,6 @@
     -J $(arg robot_name)_joint_5 -1.0
     -J $(arg robot_name)_joint_6 -1.5
     "/>
-
-  <!-- spawn controllers -->
-	<rosparam ns="psir" command="load" file="$(find psir_description)/config/arm_controller.yaml" />
-  <node ns="psir" name="controller_spawner" pkg="controller_manager" type="spawner"
-        args="arm_joint_trajectory_controller arm_joint_state_controller" />
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 
