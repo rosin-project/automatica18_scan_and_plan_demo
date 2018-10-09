@@ -1,0 +1,102 @@
+<?xml version="1.0" ?>
+<robot name="table" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	
+    <material name="grey">
+      <color rgba="0.8 0.8 0.9 1"/>
+    </material>
+
+    <xacro:property name="workspace_x" value="0.6"/>
+    <xacro:property name="workspace_y" value="1.2"/>
+    <xacro:property name="workspace_z" value="1.15"/>
+    <xacro:property name="wall_width" value="0.05"/>
+    <xacro:property name="wall_height_visual" value="0.16"/>
+
+    <xacro:macro name="table" params="parent *origin">
+
+    <link name="table">
+        <collision><!-- rechts -->
+          <origin rpy="0 0 0" xyz="0 ${0.28+wall_width/2.} ${workspace_z/2.}"/>
+          <geometry>
+             <box size="${workspace_x} ${wall_width} ${workspace_z}"/>
+          </geometry>
+        </collision>
+        <visual>
+          <origin rpy="0 0 0" xyz="0 ${0.28+wall_width/2.} ${wall_height_visual/2}"/>
+          <geometry>
+             <box size="${workspace_x} ${wall_width} ${wall_height_visual}"/>
+          </geometry>
+          <material name="grey"/>
+        </visual>
+
+        <collision><!-- vorne -->
+          <origin rpy="0 0 0" xyz="-${workspace_x/2.} -0.28 ${workspace_z/2.}"/>
+          <geometry>
+             <box size="${wall_width} ${workspace_y} ${workspace_z}"/>
+          </geometry>
+        </collision>
+        <visual>
+          <origin rpy="0 0 0" xyz="-${workspace_x/2.} -0.28 ${wall_height_visual/2}"/>
+          <geometry>
+             <box size="${wall_width} ${workspace_y} ${wall_height_visual}"/>
+          </geometry>
+          <material name="grey"/>
+        </visual>
+
+        <collision><!--hinten-->
+          <origin rpy="0 0 0" xyz="${workspace_x/2.} -0.28 ${workspace_z/2.}"/>
+          <geometry>
+             <box size="${wall_width} ${workspace_y} ${workspace_z}"/>
+          </geometry>
+        </collision>
+        <visual>
+          <origin rpy="0 0 0" xyz="${workspace_x/2.} -0.28 ${wall_height_visual/2}"/>
+          <geometry>
+             <box size="${wall_width} ${workspace_y} ${wall_height_visual}"/>
+          </geometry>
+          <material name="grey"/>
+        </visual>
+
+        <collision><!--links-->
+          <origin rpy="0 0 0" xyz="0 ${-0.92+wall_width/2.} ${workspace_z/2.}"/>
+          <geometry>
+             <box size="${workspace_x} ${wall_width} ${workspace_z}"/>
+          </geometry>
+        </collision>
+        <visual>
+          <origin rpy="0 0 0" xyz="0 ${-0.92+wall_width/2.} ${wall_height_visual/2}"/>
+          <geometry>
+             <box size="${workspace_x} ${wall_width} ${wall_height_visual}"/>
+          </geometry>
+          <material name="grey"/>
+        </visual>
+
+        <collision><!-- bottom -->
+          <origin rpy="0 0 0" xyz="0 -0.32 0.12"/>
+          <geometry>
+             <box size="${workspace_x} ${workspace_y} ${wall_width}"/>
+          </geometry>
+        </collision>
+        <visual>
+          <origin rpy="0 0 0" xyz="0 -0.32 0.12"/>
+          <geometry>
+             <box size="${workspace_x} ${workspace_y} ${wall_width}"/>
+          </geometry>
+          <material name="grey"/>
+        </visual>
+
+        <collision><!-- top -->
+          <origin rpy="0 0 0" xyz="0 -0.32 ${workspace_z}"/>
+          <geometry>
+             <box size="${workspace_x} ${workspace_y} ${wall_width}"/>
+          </geometry>
+        </collision>
+    </link>
+
+    <joint name="table_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="table"/>
+    </joint>
+
+  </xacro:macro>
+</robot>

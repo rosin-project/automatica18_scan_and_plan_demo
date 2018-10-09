@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: snp_prbt_description
+    relative_path: urdf/snp_prbt_demo.urdf.xacro
+  SRDF:
+    relative_path: config/snp_prbt_demo.srdf
+  CONFIG:
+    author_name: Harsh Deshpande
+    author_email: harshavardhan.deshpande@ipa.fraunhofer.de
+    generated_timestamp: 1525265693

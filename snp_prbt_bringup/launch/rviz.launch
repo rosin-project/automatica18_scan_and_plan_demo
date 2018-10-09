@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- rviz w/ specified configuration -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find snp_prbt_bringup)/rviz/rviz_config.rviz" output="screen" launch-prefix="nice"/>
+</launch>

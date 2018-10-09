@@ -1,0 +1,13 @@
+# Required for godel
+- git: {local-name: godel_openvoronoi, uri: 'https://github.com/ros-industrial-consortium/godel_openvoronoi.git', version: hydro-devel}
+- git: {local-name: godel, uri: 'https://github.com/ipa-hsd/godel.git', version: automatica18}
+- git: {local-name: industrial_core, uri: 'https://github.com/ros-industrial/industrial_core.git', version: kinetic-devel}
+- git: {local-name: keyence_experimental, uri: 'https://github.com/ros-industrial/keyence_experimental.git', version: adc1bc6} #Is not needed and was failing
+- git: {local-name: libsocket, uri: 'https://github.com/dermesser/libsocket.git', version: 66cc79} #Is not needed and was failing
+- git: {local-name: swri_profiler, uri: 'https://github.com/swri-robotics/swri_profiler.git', version: master}
+- git: {local-name: descartes, uri: 'https://github.com/ipa-hsd/descartes.git', version: automatica18}
+# Required for this implementation
+- git: {local-name: ensenso_ros_driver, uri: 'https://github.com/ensenso/ros_driver.git'}
+- git: {local-name: pilz_robots, uri: 'https://github.com/PilzDE/pilz_robots', version: 0.2.2}
+- git: {local-name: pilz_industrial_motion, uri: 'https://github.com/PilzDE/pilz_industrial_motion', version: kinetic-devel}
+- git: {local-name: code_coverage, uri: 'https://github.com/mikeferguson/code_coverage'}

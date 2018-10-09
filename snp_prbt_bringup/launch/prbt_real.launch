@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="robot_ip" default="169.254.60.1"/>
+  <arg name="robot_port" default="502"/>
+
+	<!-- run the "real robot" interface nodes -->
+    <include file="$(find prbt_support)/launch/robot.launch" >
+      <arg name="load_robot_description" value="false" />
+    </include>
+
+    <arg name="modbus_offset" default="512" />
+
+    <include file="$(find pilz_modbus)/launch/modbus_read_client.launch" >
+      <arg name="modbus_server_ip" default="$(arg robot_ip)" />
+      <arg name="modbus_server_port" default="$(arg robot_port)" />
+      <arg name="modbus_offset" default="$(arg modbus_offset)" />
+      <arg name="modbus_size" default="1" />
+    </include>
+
+    <node name="pilz_sto_modbus_adapter_node" pkg="pilz_sto_modbus_adapter" type="pilz_sto_modbus_adapter_node">
+      <param name="modbus_offset" value="$(arg modbus_offset)"/>
+    </node>
+
+</launch>

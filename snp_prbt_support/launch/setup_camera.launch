@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- parameters of region of interest cube-->
+  <arg name="roi_lower" default="{'x': 0.0, 'y': 0.0, 'z': 0.0}"/>
+  <arg name="roi_upper" default="{'x': 0.0, 'y': 0.0, 'z': 0.0}"/>
+  <arg name="camera_serial" default="181999"/>
+
+  <!-- Brings up Ensenso camera-->
+  <node name="ensenso_camera_node" pkg="ensenso_camera" type="ensenso_camera_node">
+    <param name="serial" value="$(arg camera_serial)"/>
+  </node>
+
+  <!-- set the region of interest of the camera -->
+  <node name="set_roi_node" pkg="snp_prbt_support" type="set_region_of_interest">
+    <rosparam param="lower_point" subst_value="True">$(arg roi_lower)</rosparam>
+    <rosparam param="upper_point" subst_value="True">$(arg roi_lower)</rosparam>
+  </node>
+
+  <!-- Ensenso request server -->
+  <node name="request_data_node" pkg="snp_prbt_support" type="ensenso_interface"/>
+
+</launch>

@@ -1,5 +1,8 @@
-:warning: This package depends on the *Pilz PSIR* robot which will be released soon! <br/>
--> Currently step `rosdep install ..` will fail
+# Scan and Polish application:
+
+Application implements:
+- `godel` (Scan and Plan): https://github.com/ros-industrial-consortium/godel
+- `pilz_robots`: https://github.com/PilzDE/pilz_robots
 
 ## Installation
 
@@ -16,14 +19,15 @@ git clone https://github.com/rosin-project/automatica18_scan_and_plan_demo.git
 
 # Download dependencies
 wstool init .
-wstool merge ~/snp_demo_ws/src/automatica18_scan_and_plan_demo/snp_demo_deps.rosinstall
+wstool merge ~/snp_demo_ws/src/automatica18_scan_and_plan_demo/snp_prbt.rosinstall
 wstool up
 
 # Reset ROS_PACKAGE_PATH
 source /opt/ros/kinetic/setup.bash
 
 # Install dependencies 
-rosdep update && rosdep install --from-paths ~/snp_demo_ws/src --ignore-src
+rosdep update && rosdep install --from-paths ~/snp_demo_ws/src --ignore-src --skip-keys="pilz_modbus pilz_sto_modbus_adapter prbt_pg70_support"
+
 
 # Build workspace
 cd ~/snp_demo_ws && catkin build 
@@ -38,11 +42,12 @@ source ~/snp_demo_ws/devel/setup.bash
 
 ```shell
 # Simulation:
-roslaunch snp_psir_bringup application_bringup.launch
+roslaunch snp_prbt_bringup application_bringup.launch
 # Info: Make sure to press play in Gazebo
 
 # Real robot:
-roslaunch snp_psir_bringup application_bringup.launch sim_robot:=false
+roslaunch snp_prbt_bringup application_bringup.launch sim_robot:=false
+# Info: Real robot requires pilz_modbus and pilz_sto_modbus_adapter
 
 ```
 
@@ -60,7 +65,7 @@ iface can0 can static
 
 
 ### Remove local scan_parameter cache
-Make sure to clear possible local `godel_robot_scan_parameters` since they would overwrite the ones of this repo (`snp_psir_bringup/config/robot_scan.yaml`).
+Make sure to clear possible local `godel_robot_scan_parameters` since they would overwrite the ones of this repo (`snp_prbt_bringup/config/robot_scan.yaml`).
 
 ```shell
 rm -f ~/.ros/godel_robot_scan_parameters.msg

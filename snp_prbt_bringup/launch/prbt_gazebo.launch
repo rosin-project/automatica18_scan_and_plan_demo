@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="robot_name" default="prbt" />
+  <arg name="paused" default="true"/>
+  <arg name="gui" default="false"/>
+
+  <param name="use_gui" value="$(arg gui)"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find snp_prbt_description)/worlds/prbt_robot.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+  </include>
+
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model $(arg robot_name)
+    -J $(arg robot_name)_joint_1 1.7
+    -J $(arg robot_name)_joint_2 0.0
+    -J $(arg robot_name)_joint_3 1.8
+    -J $(arg robot_name)_joint_4 0.0
+    -J $(arg robot_name)_joint_5 -1.0
+    -J $(arg robot_name)_joint_6 -1.5
+    "/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+</launch>

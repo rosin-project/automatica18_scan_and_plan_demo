@@ -1,0 +1,141 @@
+<?xml version="1.0" ?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="ensenso" params="parent *origin prefix:=${''}">
+
+    <link name="${prefix}ensenso">
+      <inertial>
+        <origin xyz="-0.0 -0.05 0.02" rpy="0 0 0" />
+        <mass value="0.5" />
+        <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://snp_prbt_description/meshes/ensenso_n35.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="0.8 0.8 0.9 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0.02" rpy="0 0 0" />
+        <geometry>
+          <box size="0.18 0.05 0.055"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="${prefix}ensenso_frame"/>
+    <joint name="${prefix}ensenso_mod_joint" type="fixed">
+      <origin xyz="0 0 0.052"  rpy="0 ${-pi/2} ${-pi/2}" />
+      <parent link="${prefix}ensenso" />
+      <child link="${prefix}ensenso_frame" />
+      <axis xyz="0 0 0" />
+    </joint>
+
+    <!--Joint between ensenso and fixture-->
+    <joint name="${prefix}ensenso_tool_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}" />
+      <child link="${prefix}ensenso" />
+      <axis xyz="0 0 0" />
+    </joint>
+
+    <!--Frames related to the motion of the camera-->
+    <link name="${prefix}ensenso_sensor_optical_frame">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+                 iyy="0.0001" iyz="0.0"
+                 izz="0.0001" />
+      </inertial>
+    </link>
+    <joint name="${prefix}ensenso_joint" type="fixed">
+        <parent link="${prefix}ensenso_frame"/>
+        <child link="${prefix}ensenso_optical_frame"/>
+        <origin xyz="0 0.05 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+
+    <link name="${prefix}ensenso_optical_frame">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+                 iyy="0.0001" iyz="0.0"
+                 izz="0.0001" />
+      </inertial>
+    </link>
+
+    <joint name="${prefix}ensenso_joint_sim" type="fixed">
+        <parent link="${prefix}ensenso_frame"/>
+        <child link="${prefix}ensenso_optical_frame_sim"/>
+        <origin xyz="0 0.0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+
+    <link name="${prefix}ensenso_optical_frame_sim">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+                 iyy="0.0001" iyz="0.0"
+                 izz="0.0001" />
+      </inertial>
+    </link>
+
+
+    <joint name="${prefix}ensenso_optical_joint" type="fixed">
+      <parent link="${prefix}ensenso_optical_frame"/>
+      <child link="${prefix}ensenso_sensor_optical_frame"/>
+      <origin xyz="0 0 0" rpy="0 0 3.142"/>
+    </joint>
+
+    <link name="${prefix}ensenso_move_frame"/>
+    <joint name="${prefix}ensenso_move_frame_join" type="fixed">
+      <parent link="${prefix}ensenso_frame"/>
+      <child link="${prefix}ensenso_move_frame"/>
+      <origin rpy="${pi/2} 0 0"/>
+    </joint>
+
+    <gazebo reference="${prefix}ensenso_frame">
+      <sensor type="depth" name="ensenso">
+        <always_on>true</always_on>
+        <update_rate>20.0</update_rate>
+        <camera>
+          <horizontal_fov>${60.0*3.142/180.0}</horizontal_fov>
+          <image>
+            <format>B8G8R8</format>
+            <width>640</width>
+            <height>480</height>
+          </image>
+          <clip>
+            <near>0.001</near>
+            <far>8.0</far>
+          </clip>
+        </camera>
+        <plugin name="kinect_camera_controller" filename="libgazebo_ros_openni_kinect.so">
+          <cameraName>ensenso</cameraName>
+          <alwaysOn>true</alwaysOn>
+          <updateRate>10</updateRate>
+          <imageTopicName>rgb/image_raw</imageTopicName>
+          <depthImageTopicName>depth/image_raw</depthImageTopicName>
+          <pointCloudTopicName>/point_cloud</pointCloudTopicName>
+          <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+          <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+          <frameName>${prefix}ensenso_optical_frame_sim</frameName>
+          <baseline>0.1</baseline>
+          <distortion_k1>0.0</distortion_k1>
+          <distortion_k2>0.0</distortion_k2>
+          <distortion_k3>0.0</distortion_k3>
+          <distortion_t1>0.0</distortion_t1>
+          <distortion_t2>0.0</distortion_t2>
+          <pointCloudCutoff>0.1</pointCloudCutoff>
+        </plugin>
+      </sensor>
+    </gazebo>
+
+
+  </xacro:macro>
+</robot>

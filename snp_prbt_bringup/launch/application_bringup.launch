@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="sim_robot" default="true"/>
+
+  <include file="$(find snp_prbt_bringup)/launch/hardware_bringup.launch">
+    <arg name="sim_robot" value="$(arg sim_robot)"/>
+  </include>
+
+  <include file="$(find snp_prbt_bringup)/launch/prbt_godel.launch">
+    <arg name="sim_robot" value="$(arg sim_robot)"/>
+  </include>
+
+  <include file="$(find snp_prbt_bringup)/launch/rviz.launch"/>
+
+</launch>

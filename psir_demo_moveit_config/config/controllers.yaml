@@ -1,5 +1,0 @@
-controller_list:
-  - name: "/psir/arm_joint_trajectory_controller"
-    action_ns: follow_joint_trajectory
-    type: FollowJointTrajectory
-    joints: [psir_joint_1, psir_joint_2, psir_joint_3, psir_joint_4, psir_joint_5, psir_joint_6]
