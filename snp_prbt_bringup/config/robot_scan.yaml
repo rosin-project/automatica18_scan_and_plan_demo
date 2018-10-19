@@ -1,5 +1,5 @@
 robot_scan:
-  group_name: manipulator_asus
+  group_name: manipulator_ensenso
   move_scan_vel_scaling: 0.3
   home_position: home_asus
   world_frame: world_frame

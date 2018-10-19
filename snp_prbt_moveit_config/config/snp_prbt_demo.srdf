@@ -9,20 +9,11 @@
     <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
-    <group name="manipulator">
-        <chain base_link="world_frame" tip_link="prbt_flange" />
-    </group>
     <group name="manipulator_ensenso">
-        <chain base_link="world_frame" tip_link="ensenso_optical_frame" />
-    </group>
-    <group name="manipulator_asus">
         <chain base_link="world_frame" tip_link="prbt_flange" />
     </group>
     <group name="manipulator_tcp">
         <chain base_link="world_frame" tip_link="tcp_frame" />
-    </group>
-    <group name="manipulator_keyence">
-        <chain base_link="world_frame" tip_link="ensenso_optical_frame" />
     </group>
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="fixed_joint" type="fixed" parent_frame="fixed_link" child_link="world_frame" />
