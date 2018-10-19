@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
+  <arg name="controller_group" default="manipulator"/>
   <arg name="robot_name" default="prbt" />
   <arg name="paused" default="true"/>
   <arg name="gui" default="false"/>
@@ -20,6 +21,13 @@
     -J $(arg robot_name)_joint_5 -1.0
     -J $(arg robot_name)_joint_6 -1.5
     "/>
+
+  <!-- Controllers -->
+  <group ns="$(arg robot_name)">
+    <rosparam command="load" file="$(find prbt_support)/config/$(arg controller_group)_controller.yaml" />
+    <node name="controller_spawner" pkg="controller_manager" type="spawner"
+          args="$(arg controller_group)_joint_trajectory_controller $(arg controller_group)_joint_state_controller" />
+  </group>
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 
