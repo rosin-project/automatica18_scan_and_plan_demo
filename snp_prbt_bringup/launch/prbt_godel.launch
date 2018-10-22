@@ -15,7 +15,8 @@
   <!-- Launches the blend/scan process planners: requires descartes plugin for the robot model -->
   <include file="$(find godel_process_planning)/launch/process_planning.launch">
     <arg name="robot_model_plugin" value="$(arg robot_model_plugin)"/>
-    <arg name="keyence_tcp" value="ensenso_optical_frame"/>
+    <arg name="keyence_tcp" value="prbt_flange"/>            <!-- keyence_model_ is not used -->
+    <arg name="keyence_group" value="manipulator_ensenso"/>  <!-- keyence_model_ is not used -->
   </include>
 
   <!-- Process execution nodes: These monitor the state of robot's execution of the planned path. They can be, and in this case are, robot or vendor specific -->
