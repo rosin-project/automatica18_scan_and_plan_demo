@@ -24,7 +24,7 @@ from std_srvs.srv import Trigger, TriggerResponse
 
 class scan_interface():
     def __init__(self):
-        self.trigger_service = rospy.Service("point_cloud_request",Trigger,self.get_last_scan)
+        self.trigger_service = rospy.Service("point_cloud_workspace_request",Trigger,self.get_last_scan)
         self.request_scan = actionlib.SimpleActionClient("request_data", RequestDataAction)
 
     def get_last_scan(self, req):
