@@ -23,8 +23,8 @@
 
 ```shell
 
-# Install Ensenso SDK from!
-# https://www.ensenso.com/support/sdk-download
+# Install Ensenso SDK (from https://www.ensenso.com/support/sdk-download) by:
+wget -q https://download.ensenso.com/s/ensensosdk/download?files=ensenso-sdk-2.2.65-x64.deb -O /tmp/ensenso.deb && dpkg -i /tmp/ensenso.deb
 
 # Create a new ROS workspace
 mkdir -p ~/snp_demo_ws/src && cd ~/snp_demo_ws/src
@@ -66,9 +66,23 @@ roslaunch snp_prbt_bringup application_bringup.launch sim_robot:=false
 
 ```
 
-## Systems settings
+## Scan and Plan: Remove local scan_parameter cache
+Make sure to clear possible local `godel_robot_scan_parameters` since they would overwrite the ones of this repo (`snp_prbt_bringup/config/robot_scan.yaml`).
 
-### CAN interface
+```shell
+rm -f ~/.ros/godel_robot_scan_parameters.msg
+```
+
+## Systems settings for real devices
+
+### Camera: uEye Driver
+```
+wget -q https://download.ensenso.com/s/idsdrivers/download?files=uEye_4.90.0_Linux_64.tgz -O /tmp/ueye.tgz
+tar -xvzf /tmp/ueye.tgz  -C /tmp
+sudo /tmp/ueyesdk-setup-4.90-eth-amd64.gz.run
+```
+
+### Robot: CAN interface
 Add in `/etc/network/interfaces` the following config for the [socketcan_interface]( http://wiki.ros.org/socketcan_interface).
 
 ```
@@ -79,15 +93,4 @@ iface can0 can static
 ```
 
 
-### Remove local scan_parameter cache
-Make sure to clear possible local `godel_robot_scan_parameters` since they would overwrite the ones of this repo (`snp_prbt_bringup/config/robot_scan.yaml`).
-
-```shell
-rm -f ~/.ros/godel_robot_scan_parameters.msg
-```
-
-### Fix QT bug for Robot Planing Panel (might not be required anymore)
-```shell
-echo "export QT_NO_FT_CACHE=1" >> ~/.bashrc && source ~/.bashrc
-```
 
