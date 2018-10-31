@@ -1,4 +1,6 @@
 # Scan and Polish application
+[![Build Status](https://travis-ci.com/rosin-project/automatica18_scan_and_plan_demo.svg?branch=master)](https://travis-ci.com/rosin-project/automatica18_scan_and_plan_demo)
+[![license - apache 2.0](https://img.shields.io/:license-Apache%202.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)
 
 <a href="https://ipa-jfh.github.io/urdf-animation/application_scan_and_plan/">
     <img src="https://user-images.githubusercontent.com/17281534/46005937-aafba700-c0b6-11e8-9d8f-0148392488f1.gif" width="430" height="250">
