@@ -1,0 +1,13 @@
+<launch>
+  <arg name="bringup_pkg" default="snp_prbt_bringup"/>
+  <arg name="gui" default="false"/>
+  <arg name="sim_robot" default="true"/>
+  <arg name="time_limit" default="2400.0"/>
+
+  <include file="$(eval find(bringup_pkg) + '/launch/application_bringup.launch')">
+     <arg name="sim_robot" value="$(arg sim_robot)"/>
+     <arg name="gui" value="$(arg gui)"/>
+   </include>
+
+  <test pkg="snp_py" type="test_snp.py" test-name="test_snp" time-limit="$(arg time_limit)"/>
+</launch>
