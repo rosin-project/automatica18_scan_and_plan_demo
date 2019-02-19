@@ -6,8 +6,6 @@
   <arg name="paused" default="true"/>
   <arg name="gui" default="false"/>
 
-  <param name="use_gui" value="$(arg gui)"/>
-
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find snp_prbt_description)/worlds/prbt_robot.world"/>
     <arg name="paused" value="$(arg paused)"/>
