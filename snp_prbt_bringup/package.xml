@@ -13,6 +13,8 @@
 
   <exec_depend>controller_manager</exec_depend>
   <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>gazebo_ros_control</exec_depend>
+  <exec_depend>gazebo_ros_pkgs</exec_depend>
   <exec_depend>godel_process_planning</exec_depend>
   <exec_depend>godel_surface_detection</exec_depend>
   <exec_depend>industrial_robot_simulator_service</exec_depend>
