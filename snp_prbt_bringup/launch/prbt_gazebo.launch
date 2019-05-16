@@ -2,15 +2,14 @@
 <launch>
 
   <arg name="controller_group" default="manipulator"/>
+  <arg name="gui" default="true"/>
   <arg name="robot_name" default="prbt" />
   <arg name="paused" default="true"/>
-  <arg name="gui" default="false"/>
-
-  <param name="use_gui" value="$(arg gui)"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find snp_prbt_description)/worlds/prbt_robot.world"/>
     <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>
   </include>
 
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model $(arg robot_name)
